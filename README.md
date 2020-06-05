@@ -1,6 +1,6 @@
 # Terraform EC2 Service Module
 
-This module deploys containerise service on EC2 machine with below and other more capabilities...
+This module deploys containerise service on EC2 machine with below and other more capabilities.
 
 - [ASG](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) 
 - [TargetGroup](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
@@ -10,7 +10,7 @@ This module deploys containerise service on EC2 machine with below and other mor
   
 ## Running Test
 
-Test example is [here](tests)
+Test example is [here](test)
 
 - `$ make validate`  
 
