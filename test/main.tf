@@ -16,11 +16,11 @@ resource "aws_key_pair" "ec2_key_pair" {
   public_key      = file("${path.module}/configs/key.pub")
 }
 
-module "app_cluster" {
+module "service" {
   source = "../terraform"
 
-  vpc_id        = data.aws_vpc.vpc.id
-  vpc_subne_ids = data.aws_subnet_ids.subnets.ids
+  vpc_id        = "vpc-sdad"
+  vpc_subne_ids = "subnet-sdads"
 
   service_port = "8080"
   service_docker_compose_content = file("${path.module}/configs/docker-compose.yml")

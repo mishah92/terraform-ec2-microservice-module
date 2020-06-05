@@ -1,21 +1,5 @@
 data "aws_caller_identity" "current" {}
 
-data "aws_vpc" "vpc" {
-  filter {
-    name = "tag:Name"
-    values = [
-    "PrimaryVPC"]
-  }
-}
-
-data "aws_subnet_ids" "subnets" {
-  vpc_id = data.aws_vpc.vpc.id
-
-  tags = {
-    Tier = "App"
-  }
-}
-
 data "aws_ami" "ec2_ami" {
   most_recent = true
   owners      = ["099720109477"]
