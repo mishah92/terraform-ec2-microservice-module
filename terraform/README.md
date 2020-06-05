@@ -6,30 +6,12 @@ This module deploys containerise service on EC2 machine with below and other mor
 - [TargetGroup](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 - [LauchTempalte](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) 
 - [IAM](https://aws.amazon.com/iam/)
-  
-  
-## Running Test
-
-Test example is [here](tests)
-
-- `$ make validate`  
-
-    Validate the Terraform modules and configurations with values. 
-    
-- `$ make apply`  
-
-    Deploy the Terraform module.
-
-- `$ make destroy`  
-
-    Destroy the Terraform module. 
-
 
 ## Development
 
 **Terraform version**: >= `0.12`
 
-### How to use it?
+### Example
 
 ```hcl-terraform
 
@@ -65,7 +47,7 @@ module "service" {
 }
 ```
 
-For more info on variables, check [here](terraform/variables.tf)
+For more info on variables, check [here](variables.tf)
 
 ### Overview
 
