@@ -1,13 +1,4 @@
-# Terraform EC2 Service Module
-
-This module deploys containerise service on EC2 machine with below and other more capabilities...
-
-- [ASG](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) 
-- [TargetGroup](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
-- [LauchTempalte](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) 
-- [IAM](https://aws.amazon.com/iam/)
-
-## Development
+# Development
 
 **Terraform version**: >= `0.12`
 
@@ -48,7 +39,3 @@ module "service" {
 ```
 
 For more info on variables, check [here](variables.tf)
-
-### Overview
-
-- **Maintainer**: mishalshah92@gmail.com
