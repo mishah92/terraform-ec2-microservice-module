@@ -25,7 +25,7 @@ terraform {
 }
 
 module "service" {
-  source = "git::https://github.com/pro-works/terraform-ec2-service-module.git//terraform"
+  source = "git::https://github.com/mishah92/terraform-ec2-service-module.git//terraform"
   
   vpc_id    = "vpc-example"
   vpc_subne_ids = [ "subnet-example" ]
