@@ -159,8 +159,8 @@ variable "tags" {
   default     = {}
 }
 
-variable "customer" {
-  description = "Your team's domain id."
+variable "owner" {
+  description = "Owner of the service."
   type        = string
 }
 
