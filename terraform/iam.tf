@@ -13,7 +13,7 @@ resource "aws_iam_role" "ec2_instance_role" {
 resource "aws_iam_policy" "ec2_instance_role_policy" {
   name   = "${local.name_prefix}-${data.aws_region.current.name}"
   path   = local.path_prefix
-  policy = var.ec2_iam_policy_json
+  policy = var.ec2_iam_policy_json == null ? "{}" : var.ec2_iam_policy_json
 }
 
 resource "aws_iam_role_policy_attachment" "ec2_role_policy_attachment" {
