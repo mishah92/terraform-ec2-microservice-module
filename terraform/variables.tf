@@ -5,7 +5,7 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "vpc_subne_ids" {
+variable "vpc_subnet_ids" {
   description = "List of subnet."
   type        = list(string)
 }
@@ -21,8 +21,8 @@ variable "service_version" {
 
 variable "service_port" {
   description = "TCP port on which service is running."
-  type = string
-  default = 80
+  type        = string
+  default     = 80
 }
 
 variable "service_docker_compose_content" {
@@ -33,7 +33,7 @@ variable "service_docker_compose_content" {
 # Launch Template
 
 variable "ec2_keypair_name" {
-  description = "Name of the ec2 key-pair. This will allow you to access your servicelication instance. Default: null"
+  description = "Name of the ec2 key-pair. This will allow you to access your service instance. Default: null"
   type        = string
   default     = null
 }
@@ -55,34 +55,40 @@ variable "ec2_instance_type" {
   default     = "t2.micro"
 }
 
-variable "ec2_instnace_root_volume_size" {
+variable "ec2_instance_root_volume_size" {
   description = "Root volume size in GB of EC2 machine. Default: 35"
   type        = number
   default     = 35
 }
 
+variable "ec2_public" {
+  description = "Define instance is public or private. Default: false"
+  type        = bool
+  default     = false
+}
+
 # ASG
 
 variable "asg_desired_capacity" {
-  description = "Desired or default cpacity for Auto-Scaling Group. Default: 1"
+  description = "Desired or default capacity for Auto-Scaling Group. Default: 1"
   type        = number
   default     = 1
 }
 
 variable "asg_min_size" {
-  description = "Min number of EC2 instace runniing by Auto-Scaling Group. Default: 1"
+  description = "Min number of EC2 instance running by Auto-Scaling Group. Default: 1"
   type        = number
   default     = 1
 }
 
 variable "asg_max_size" {
-  description = "Max number of EC2 instace runniing by Auto-Scaling Group. Default: 3"
+  description = "Max number of EC2 instance running by Auto-Scaling Group. Default: 3"
   type        = number
   default     = 3
 }
 
 variable "asg_cooldown" {
-  description = "Min number of EC2 instace runniing by Auto-Scaling Group. Default: 1"
+  description = "Min number of EC2 instance running by Auto-Scaling Group. Default: 1"
   type        = number
   default     = 60
 }
@@ -121,21 +127,27 @@ variable "tg_healthcheck_path" {
 }
 
 variable "tg_healthcheck_timeout" {
-  description = "Helthcehck request timeout in seconds."
+  description = "Healthcehck request timeout in seconds."
   type        = number
   default     = 2
 }
 
 variable "tg_healthcheck_healthy_threshold" {
-  description = "Number if helthy threasolds before putting instance into service."
+  description = "Number if healthy threasolds before putting instance into service."
   type        = number
   default     = 3
 }
 
 variable "tg_healthcheck_unhealthy_threshold" {
-  description = "Number if unhelthy threasolds."
+  description = "Number if unhealthy threasolds."
   type        = number
   default     = 10
+}
+
+variable "tg_healthcheck_response_code" {
+  description = "HTTP/HTTPS response code for health-check verification."
+  type        = number
+  default     = 200
 }
 
 
@@ -147,7 +159,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "domain" {
+variable "customer" {
   description = "Your team's domain id."
   type        = string
 }
@@ -158,7 +170,7 @@ variable "service" {
 }
 
 variable "env" {
-  description = "Name of your environement or stack."
+  description = "Name of your environment or stack."
   type        = string
 }
 

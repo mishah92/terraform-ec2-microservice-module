@@ -8,26 +8,46 @@ This module deploys containerise service on EC2 machine with below and other mor
 - [IAM](https://aws.amazon.com/iam/)
   
   
-## Running Test
+# Development
 
-Test example is [here](test)
+**Terraform version**: >= `0.12`
 
-- `$ make validate`  
+### Example
 
-    Validate the Terraform modules and configurations with values. 
-    
-- `$ make apply`  
+```hcl-terraform
 
-    Deploy the Terraform module.
+provider "aws" {
+  region = "us-west-2"
+}
 
-- `$ make destroy`  
+terraform {
+  required_version = ">= 0.12.0"
+}
 
-    Destroy the Terraform module. 
+module "service" {
+  source = "git::https://github.com/pro-works/terraform-ec2-service-module.git//terraform"
+  
+  vpc_id    = "vpc-example"
+  vpc_subne_ids = [ "subnet-example" ]
+  
+  # Service
+  service_docker_compose_content = "Test content"
+  
+  # Launch Template
+  ec2_ssh_public_key = "public-key-content"
+  ec2_iam_policy_json = "{}"
+  ec2_ami_id = "centos"
+  ec2_instance_type = "t2.medium"
+  
+  # Tags
+  domain  = "example"
+  service = "jenkins"
+  env     = "test"
+  commit  = "no_commit"
 
-
-## Development
-
-Check [here](terraform) to learn how to use this module.
+}
+```
+For more info on variables, check [here](terraform/variables.tf)
 
 ### Overview
 

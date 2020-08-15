@@ -12,19 +12,19 @@ resource "aws_launch_template" "service_template" {
 
   network_interfaces {
     description                 = "Service ${var.service}-${var.env} network interface."
-    associate_public_ip_address = false
+    associate_public_ip_address = var.ec2_public
     delete_on_termination       = true
-    subnet_id                   = element(tolist(var.vpc_subne_ids), 0)
+    subnet_id                   = element(tolist(var.vpc_subnet_ids), 0)
     security_groups = [
       aws_security_group.ec2_sg.id
     ]
   }
 
-  block_device_mserviceings {
+  block_device_mappings {
     device_name = "/dev/sda1"
 
     ebs {
-      volume_size           = var.ec2_instnace_root_volume_size
+      volume_size           = var.ec2_instance_root_volume_size
       delete_on_termination = true
     }
   }
@@ -48,7 +48,7 @@ resource "aws_launch_template" "service_template" {
 }
 
 resource "aws_autoscaling_group" "service_asg" {
-  name             = local.name_prefix
+  name_prefix      = local.name_prefix
   force_delete     = false
   max_size         = var.asg_max_size
   min_size         = var.asg_min_size
@@ -64,7 +64,7 @@ resource "aws_autoscaling_group" "service_asg" {
   health_check_grace_period = var.asg_health_check_grace_period
   wait_for_elb_capacity     = 1
 
-  vpc_zone_identifier = tolist(var.vpc_subne_ids)
+  vpc_zone_identifier = tolist(var.vpc_subnet_ids)
 
   target_group_arns = [
     aws_lb_target_group.service_lb_tg.id
@@ -124,6 +124,7 @@ resource "aws_lb_target_group" "service_lb_tg" {
     timeout             = var.tg_healthcheck_timeout
     healthy_threshold   = var.tg_healthcheck_healthy_threshold
     unhealthy_threshold = var.tg_healthcheck_unhealthy_threshold
+    matcher             = var.tg_healthcheck_response_code
   }
 
   stickiness {

@@ -2,12 +2,12 @@ output "service_target_group_name" {
   value = aws_lb_target_group.service_lb_tg.name
 }
 
-output "service_target_group_arn" {
-  value = aws_lb_target_group.service_lb_tg.arn
-}
-
 output "service_lc_name" {
   value = aws_launch_template.service_template.name
+}
+
+output "service_target_group_arn" {
+  value = aws_lb_target_group.service_lb_tg.arn
 }
 
 output "service_asg_name" {

@@ -4,8 +4,8 @@ resource "aws_security_group" "ec2_sg" {
   vpc_id      = var.vpc_id
 
   egress {
-    from_port = "0"
-    to_port   = "0"
+    from_port = 0
+    to_port   = 0
     protocol  = "-1"
 
     cidr_blocks = [

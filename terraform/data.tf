@@ -34,6 +34,8 @@ data "template_file" "init_script" {
   template = file("${path.module}/configs/init.sh")
 
   vars = {
+    AWS_REGION               = data.aws_region.current.name
+    AWS_ECR_URL              = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com"
     docker_compose_file_path = "docker-compose.yaml"
   }
 }
@@ -53,5 +55,4 @@ data "template_cloudinit_config" "ec2_init_config_base64_encode" {
     content_type = "text/x-shellscript"
     content      = data.template_file.init_script.rendered
   }
-
 }
