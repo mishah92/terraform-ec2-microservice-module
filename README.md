@@ -40,10 +40,10 @@ module "service" {
   ec2_instance_type = "t2.medium"
   
   # Tags
-  domain  = "example"
-  service = "jenkins"
+  owner   = "mishah92"
+  service = "SimplePingManager"
   env     = "test"
-  commit  = "no_commit"
+  commit  = "git-sha"
 
 }
 ```
