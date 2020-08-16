@@ -37,6 +37,7 @@ data "template_file" "init_script" {
     AWS_REGION               = data.aws_region.current.name
     AWS_ECR_URL              = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com"
     docker_compose_file_path = "docker-compose.yaml"
+    ECR_CHECK                = var.ecr_login
   }
 }
 

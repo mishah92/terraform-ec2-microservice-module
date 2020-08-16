@@ -10,6 +10,11 @@ variable "vpc_subnet_ids" {
   type        = list(string)
 }
 
+variable "ecr_login" {
+  description = "True if login to ecr."
+  type        = bool
+  default     = false
+}
 
 # Service
 
