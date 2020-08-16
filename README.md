@@ -1,4 +1,4 @@
-# Terraform EC2 Service Module
+# Terraform EC2 MicroService Module
 
 This module deploys containerise service on EC2 machine with below and other more capabilities.
 
